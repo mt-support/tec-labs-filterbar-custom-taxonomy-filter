@@ -13,9 +13,8 @@ Adds a Filter Bar filter for the 'tribe_events_tag' custom taxonomy.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and Markdown parsed.
+Adds a Filter Bar filter for the 'tribe_events_tag' custom taxonomy. You will need to create the custom taxonomy yourself.
+The Custom Post Type UI plugin can be helpful in that.
 
 == Installation ==
 
