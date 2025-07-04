@@ -36,6 +36,6 @@ We're always interested in your feedback, and our [Help Desk](https://support.th
 
 == Changelog ==
 
-= [1.0.0] YYYY-MM-DD =
+= [1.0.0] 2025-07-04 =
 
 * Initial release
