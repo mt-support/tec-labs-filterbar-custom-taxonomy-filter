@@ -105,7 +105,12 @@ class Plugin extends Service_Provider {
 
 		// Start binds.
 
+		// Register filter on the back-end
+		add_action( 'tribe_events_filters_create_filters', [ $this, 'tec_kb_create_filter' ] );
 
+		// Make it work with calendar views.
+		add_filter( 'tribe_context_locations', [ $this, 'tec_kb_filter_context_locations' ] );
+		add_filter( 'tribe_events_filter_bar_context_to_filter_map', [ $this, 'tec_kb_filter_map' ] );
 
 		// End binds.
 
@@ -137,6 +142,67 @@ class Plugin extends Service_Provider {
 
 		$this->container->singleton( Plugin_Register::class, $plugin_register );
 		$this->container->singleton( 'extension.custom_taxonomy_filter', $plugin_register );
+	}
+
+	/**
+	 * Includes the custom filter class and creates an instance of it.
+	 */
+	function tec_kb_create_filter() {
+		if ( ! class_exists( 'Tribe__Events__Filterbar__Filter' ) ) {
+			return;
+		}
+
+		include_once $this->plugin_path . 'src/Filters/Custom_Taxonomy_Filter.php';
+
+		new \Custom_Taxonomy_Filter(
+			__( 'Event Tag', 'tribe-events-filter-view' ),
+			'custom_taxonomy'
+		);
+	}
+
+	/**
+	 * Filters the Context locations to let the Context know how to fetch the value of the filter from a request.
+	 *
+	 * Here we add the `time_of_day_custom` as a read-only Context location: we'll not need to write it.
+	 *
+	 * @param array<string,array> $locations A map of the locations the Context supports and is able to read from and write to.
+	 *
+	 * @return array<string,array> The filtered map of Context locations, with the one required from the filter added to it.
+	 */
+	function tec_kb_filter_context_locations( array $locations ) {
+		// Read the filter-selected values, if any, from the URL request vars.
+		$locations['custom_taxonomy'] = [
+			'read' => [
+				\Tribe__Context::QUERY_VAR   => [ 'tribe_custom_taxonomy' ],
+				\Tribe__Context::REQUEST_VAR => [ 'tribe_custom_taxonomy' ]
+			],
+		];
+
+		// Return the modified $locations.
+		return $locations;
+	}
+
+	/**
+	 * Filters the map of filters available on the front-end to include the custom one.
+	 *
+	 * @param array<string,string> $map A map relating the filter slugs to their respective classes.
+	 *
+	 * @return array<string,string> The filtered slug to filter the class map.
+	 */
+	function tec_kb_filter_map( array $map ) {
+		if ( ! class_exists( 'Tribe__Events__Filterbar__Filter' ) ) {
+			// This would not make much sense, but let's be cautious.
+			return $map;
+		}
+
+		// Include the filter class.
+		include_once $this->plugin_path . 'src/Filters/Custom_Taxonomy_Filter.php';
+
+		// Add the filter class to our filters map.
+		$map['custom_taxonomy'] = 'Custom_Taxonomy_Filter';
+
+		// Return the modified $map.
+		return $map;
 	}
 
 	/**
