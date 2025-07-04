@@ -2,7 +2,7 @@
 
 This is the TEC Labs Extension Template. It allows you to easily extend our plugins: The Events Calendar, Event Tickets, and their associated add-on plugins.
 
-The primary benefits of using this template is that it's gets you up-and-running quicker than building a custom plugin yourself, and it's best to extend one plugin via another plugin instead of adding custom code to your child theme's `functions.php` file.
+The primary benefits of using this template are that it's gets you up-and-running quicker than building a custom plugin yourself, and it's best to extend one plugin via another plugin instead of adding custom code to your child theme's `functions.php` file.
 
 We ensure your new extension does not run if its required base plugin is not activated, which helps avoid fatal errors and means fewer `class_exists()` checks are applicable.
 
@@ -12,13 +12,13 @@ Newer extensions will only be compatible with the version of The Events Calendar
 
 ## Extension template Information
 
-If you have modifications you would like to suggest to our base template, here is the correct place to submit a Pull Request, but if you are looking for a specific extension you should take a look at our [GitHub profile](https://github.com/mt-support) or our [Extensions page on TheEventsCalendar.com](https://theeventscalendar.com/extensions/).
+If you have modifications you would like to suggest to our base template, here is the correct place to submit a Pull Request, but if you are looking for a specific extension, you should take a look at our [GitHub profile](https://github.com/mt-support) or our [Extensions page on TheEventsCalendar.com](https://theeventscalendar.com/extensions/).
 
 #### If you want to make your own new extension:
 
 1. On Slack use `bot create (tec|et) extension named <plugin name>`
-1. Your Extension is currently a functional WordPress plugin at this point! Please refer to our [Good Practices](#good-practices) before the next step.
-1. Zip and release your plugin!
+2. Your Extension is currently a functional WordPress plugin at this point! Please refer to our [Good Practices](#good-practices) before the next step.
+3. Zip and release your plugin!
 
 #### Good Practices
 
@@ -33,17 +33,17 @@ If you have modifications you would like to suggest to our base template, here i
 
 #### Extension Template Variables
 
-By default, all of these variables will be replaced by the create method from the slack bot, but if you are creating your extension manually you will need to find/replace on all of the below.
+By default, all of these variables will be replaced by the create method from the Slack bot, but if you are creating your extension manually, you will need to do find/replace for all of the below.
 
-* `__TRIBE_BASE__` - "The Events Calendar" or "Event Tickets"
-* `__TRIBE_NAME__` - Plugin Human-readable name, e.g. "Sample Extension"
-* `__TRIBE_NAMESPACE__` - Which namespace we will use for the plugin. Usually the plugin name or the slug in uppercase without spaces, e.g. "SampleExtension"
-* `__TRIBE_SLUG__` - Uses using dashes normally, e.g. "sample-extension"
-* `__TRIBE_DOMAIN__` - Translation domain normally with "tribe-" prefix, e.g. "tec-labs-sample-extension"
-* `__TRIBE_SLUG_CLEAN__` - Uses underscores, so it's safe for variables, e.g. "sample_extension"
-* `__TRIBE_SLUG_CLEAN_ALLCAPS__` - All-caps of clean slug, e.g. "SAMPLE_EXTENSION"
-* `__TRIBE_URL__` - The URL of the extension page, by default empty. Usually "https://theeventscalendar.com/extensions/sample-extension/"
-* `__TRIBE_VERSION__` - Version number of the extension, by default empty. Follows the "1.0.0" format
+* `The Events Calendar` - "The Events Calendar" or "Event Tickets"
+* `Custom Taxonomy Filter` - Plugin Human-readable name, e.g. "Sample Extension"
+* `CustomTaxonomyFilter` - Which namespace we will use for the plugin. Usually the plugin name or the slug in uppercase without spaces, e.g. "SampleExtension"
+* `custom-taxonomy-filter` - Uses using dashes normally, e.g. "sample-extension"
+* `tec-labs-custom-taxonomy-filter` - Translation domain normally with "tribe-" prefix, e.g. "tec-labs-sample-extension"
+* `custom_taxonomy_filter` - Uses underscores, so it's safe for variables, e.g. "sample_extension"
+* `CUSTOM_TAXONOMY_FILTER` - All-caps of clean slug, e.g. "SAMPLE_EXTENSION"
+* `custom-taxonomy-filter-for-filter-bar` - The URL of the extension page, by default, empty. Usually "https://theeventscalendar.com/extensions/sample-extension/"
+* `1.0.0` - Version number of the extension, by default, empty. Follows the "1.0.0" format
 * `__TRIBE_DESCRIPTION__` - The description of the extension, by default empty.
 
 #### Slack Bot commands related to Extensions
@@ -55,7 +55,7 @@ Bot will determine the namespace based on the plugin name:
 bot create (tec|et) extension named <plugin name>
 ```
 
-Specifically passing a namespace that is different from the plugin name:
+Passing a specific namespace that is different from the plugin name:
 ```
 bot create (tec|et) extension named <plugin name> with a namespace of <Plugin_Namespace>
 ```
