@@ -67,7 +67,7 @@ class Plugin extends Service_Provider {
 	public $plugin_url;
 
 	/**
-	 * Setup the Extension's properties.
+	 * Set up the Extension's properties.
 	 *
 	 * This always executes even if the required plugins are not present.
 	 *

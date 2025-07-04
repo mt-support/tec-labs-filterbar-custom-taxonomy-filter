@@ -47,7 +47,7 @@ class PUE extends Service_Provider {
 	 *
 	 * @var string
 	 */
-	private $update_url = 'http://tri.be/';
+	private $update_url = 'https://tri.be/';
 
 	/**
 	 * The PUE checker instance.
@@ -85,11 +85,11 @@ class PUE extends Service_Provider {
 	 */
 	public function load_plugin_update_engine() {
 		/**
-		 * Filters whether Extension exists on PUE component should manage the plugin updates or not.
+		 * Filters whether Extension exists on the PUE component should manage the plugin updates or not.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param bool   $pue_enabled Whether PUE component should manage the plugin updates or not.
+		 * @param bool   $pue_enabled Whether the PUE component should manage the plugin updates or not.
 		 * @param string $pue_slug    The plugin slug used to register it in the Plugin Update Engine.
 		 */
 		$pue_enabled = apply_filters( 'tribe_enable_pue', true, static::get_slug() );
