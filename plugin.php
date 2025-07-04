@@ -13,7 +13,7 @@
  *
  *     This plugin is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
+ *     the Free Software Foundation, either version 3 of the License or
  *     any later version.
  *
  *     This plugin is distributed in the hope that it will be useful,
@@ -23,7 +23,7 @@
  */
 
 /**
- * Define the base file that loaded the plugin for determining plugin path and other variables.
+ * Define the base file that loaded the plugin for determining the plugin path and other variables.
  *
  * @since 1.0.0
  *
@@ -37,7 +37,7 @@ define( 'TRIBE_EXTENSION_CUSTOM_TAXONOMY_FILTER_FILE', __FILE__ );
  * @since 1.0.0
  */
 function tribe_extension_custom_taxonomy_filter() {
-	// When we don't have autoloader from common we bail.
+	// Bail when we don't have autoloader from Common.
 	if ( ! class_exists( 'Tribe__Autoloader' ) ) {
 		return;
 	}
